@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Scripts"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Money Plus"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+add [ecx+04],eax
+
+originalcode:
+// mov [ecx+04],eax
+pop ebp
+ret 0004
+
+exit:
+jmp returnhere
+
+"FC3.dll"+7434B8:
+jmp newmem
+nop 2
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"FC3.dll"+7434B8:
+db 89 41 04 5D C2 04 00
+//mov [ecx+04],eax
+//pop ebp
+//ret 0004
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Money Min"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+add [ecx+04],eax
+
+originalcode:
+// mov [ecx+04],eax
+pop ebp
+ret 0004
+
+exit:
+jmp returnhere
+
+"FC3.dll"+7434CC:
+jmp newmem
+nop 2
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"FC3.dll"+7434CC:
+db 89 41 04 5D C2 04 00
+//mov [ecx+04],eax
+//pop ebp
+//ret 0004
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Unlimeted Health"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+alloc(foo,4)
+
+foo:
+dd (float)99999
+
+newmem:
+movss xmm0,[foo]
+
+originalcode:
+movss [esi+10],xmm0
+
+exit:
+jmp returnhere
+
+"FC3.dll"+62BA45:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"FC3.dll"+62BA45:
+db F3 0F 11 46 10
+//movss [esi+10],xmm0
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Unlimited Ammo"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+// mov eax,#0
+// add [esi+10],#0
+
+originalcode:
+sub [esi+10],#0
+pop edi
+pop esi
+
+exit:
+jmp returnhere
+
+"FC3.dll"+6CDD56:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"FC3.dll"+6CDD56:
+db 29 46 10 5F 5E
+//sub [esi+10],eax
+//pop edi
+//pop esi
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"No Reload"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+cmp [eax+36C],1
+je originalcode
+
+mov edx,#0
+// mov [eax],edx
+
+originalcode:
+mov [eax],edx
+pop ebp
+ret 0004
+
+exit:
+jmp returnhere
+
+"FC3.dll"+65013E:
+jmp newmem
+nop
+returnhere:
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+
+"FC3.dll"+65013E:
+db 89 10 5D C2 04 00
+//mov [eax],edx
+//pop ebp
+//ret 0004
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Pointers"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"Health Pointer"</Description>
+          <Options moHideChildren="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>32</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC3.dll"+01E18A40</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>24</Offset>
+                <Offset>54</Offset>
+                <Offset>88</Offset>
+                <Offset>40</Offset>
+                <Offset>C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC3.dll"+01E18A2C</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>24</Offset>
+                <Offset>54</Offset>
+                <Offset>88</Offset>
+                <Offset>40</Offset>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>3D1C41EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>41c47864</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>3b13e664</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Money plus:mov [ecx+04],eax</Description>
+      <AddressString>FC3.dll+7434B8</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>79</Byte>
+        <Byte>02</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>55</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Money min:mov [ecx+04],eax</Description>
+      <AddressString>FC3.dll+7434CC</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>79</Byte>
+        <Byte>02</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Bullet Write :mov [eax],edx</Description>
+      <AddressString>FC3.dll+65013E</AddressString>
+      <Before>
+        <Byte>60</Byte>
+        <Byte>C6</Byte>
+        <Byte>41</Byte>
+        <Byte>44</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Health write:movss [esi+10],xmm0</Description>
+      <AddressString>FC3.dll+62BA45</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>80</Byte>
+        <Byte>7D</Byte>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>7F</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ammo min :sub [esi+10],eax</Description>
+      <AddressString>FC3.dll+6CDD56</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>F8</Byte>
+        <Byte>0F</Byte>
+        <Byte>4C</Byte>
+        <Byte>C7</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ammo plus :add [esi+10],ebx</Description>
+      <AddressString>FC3.dll+6CDD15</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>C3</Byte>
+        <Byte>EB</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>5E</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>10</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Exp Write :add [esi+3C],edx</Description>
+      <AddressString>FC3.dll+8297A9</AddressString>
+      <Before>
+        <Byte>73</Byte>
+        <Byte>39</Byte>
+        <Byte>01</Byte>
+        <Byte>56</Byte>
+        <Byte>38</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>56</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>2C</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>Health
+ESI   Me     Enemy/other
+2C    2          0        XXXX
+ECX
+404   3          2/0
+C20   1          8/0/xxx
+3C    4          0
+Bullet Write
+EAX       Me      Enemy/Other
+27C        1          0
+350
+36C
+</Comments>
+</CheatTable>

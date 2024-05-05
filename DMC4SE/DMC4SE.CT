@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Red Orb Multiply 200x"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+imul edi,#200
+
+originalcode:
+add [esi+00000184],edi
+
+exit:
+jmp returnhere
+
+"DevilMayCry4SpecialEdition.exe"+19A4F0:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"DevilMayCry4SpecialEdition.exe"+19A4F0:
+db 01 BE 84 01 00 00
+//add [esi+00000184],edi
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Proud Soul no Minus"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+//imul edi,#2
+
+originalcode:
+sub [esi+00000374],edi
+
+exit:
+jmp returnhere
+
+"DevilMayCry4SpecialEdition.exe"+1ADE13:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"DevilMayCry4SpecialEdition.exe"+1ADE13:
+db 01 BE 74 03 00 00
+//add [esi+00000374],edi
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Devil Star Item no Minus"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,32)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+
+originalcode:
+sub [esi+44],ecx
+mov bl,01
+
+exit:
+jmp returnhere
+
+"DevilMayCry4SpecialEdition.exe"+1ADA91:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"DevilMayCry4SpecialEdition.exe"+1ADA91:
+db 01 4E 44 B3 01
+//add [esi+44],ecx
+//mov bl,01
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1CD89744</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1CD89414</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Red Orb Write :add [esi+00000184],edi</Description>
+      <AddressString>DevilMayCry4SpecialEdition.exe+19A4F0</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>74</Byte>
+        <Byte>02</Byte>
+        <Byte>03</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>BE</Byte>
+        <Byte>84</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>01</Byte>
+        <Byte>BE</Byte>
+        <Byte>88</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Red Orb Write 2 :mov [esi+00000280],edx</Description>
+      <AddressString>DevilMayCry4SpecialEdition.exe+874C1</AddressString>
+      <Before>
+        <Byte>91</Byte>
+        <Byte>84</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>96</Byte>
+        <Byte>80</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>6A</Byte>
+        <Byte>80</Byte>
+        <Byte>BE</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Proud Soul :add [esi+00000374],edi</Description>
+      <AddressString>DevilMayCry4SpecialEdition.exe+1ADE13</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>EB</Byte>
+        <Byte>27</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>BE</Byte>
+        <Byte>74</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>79</Byte>
+        <Byte>0C</Byte>
+        <Byte>C7</Byte>
+        <Byte>86</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Devil Star :add [esi+44],ecx</Description>
+      <AddressString>DevilMayCry4SpecialEdition.exe+1ADA91</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>4E</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>B3</Byte>
+        <Byte>01</Byte>
+        <Byte>79</Byte>
+        <Byte>09</Byte>
+        <Byte>C7</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
